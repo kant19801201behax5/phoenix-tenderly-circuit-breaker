@@ -84,11 +84,17 @@ the action catches the error and does nothing. You receive an alert to investiga
 
 | | Chainlink L2 Feed | Phoenix Zero |
 |---|---|---|
-| Signal type | Binary (UP/DOWN) | Latency + MEV risk score |
+| Signal type | Binary (UP/DOWN) | RTT latency + revert ratio + MEV risk |
 | Updates when | Sequencer already down | **27s before congestion** |
 | MEV detection | ❌ | ✅ `mev_pre_signal` flag |
+| Arbitrum revert ratio | ❌ | ✅ R²=0.899 — predicts MEV wars even through Timeboost |
 | Gas velocity | ❌ | ✅ rising/falling fast |
+| Cross-chain spread | ❌ | ✅ ZKSync→Base lead indicator (+2-5 min) |
 | Price | Free | $0.0001/call |
+
+### Why arb_revert_ratio matters (May 2026)
+
+Arbitrum Timeboost was designed to suppress MEV. When `arb_revert_ratio` spikes anyway, it means an MEV war is happening **despite** the protection layer. This is the signal — R²=0.899 across 90 days of data. No other public feed exposes this.
 
 ---
 
