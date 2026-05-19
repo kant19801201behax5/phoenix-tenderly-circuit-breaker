@@ -1,0 +1,15 @@
+account_id: ""
+project_slug: ""
+
+actions:
+  phoenix-circuit-breaker:
+    runtime: v2
+    sources: actions
+    specs:
+      circuit-breaker:
+        description: "Phoenix Zero L2 Circuit Breaker — auto-pause on sequencer anomaly"
+        function: circuit-breaker:circuitBreaker
+        trigger:
+          type: periodic
+          periodic:
+            interval: 30s
